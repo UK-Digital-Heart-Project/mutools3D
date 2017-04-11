@@ -1,0 +1,14 @@
+Package: mutools3D
+Title: Tools for Mass Univariate Analysis of 3D Phenotypes
+Version: 1.0
+Authors@R: person("Carlo", "Biffi", email = "c.biffi15@imperial.ac.uk", role = c("aut", "cre"))
+Description: Tools for Mass Univariate Analysis of 3D Phenotypes
+Depends: R (>= 3.3.2), igraph, doParallel, parallel
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+Imports:
+    igraph,
+    parallel,
+    doParallel
+RoxygenNote: 6.0.1
