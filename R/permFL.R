@@ -31,7 +31,7 @@ permFL <- function(X, Y, extract, A, NNmatrix, nPermutations = 1000, HC4m = FALS
     cl <- makeCluster(nCores)
     registerDoParallel(cl)
   
-    resP <- foreach(iF=1:nPermutations, .packages='MUA3DP', .combine=rbind)%dopar%{
+    resP <- foreach(iF=1:nPermutations, .packages='mutools3D', .combine=rbind)%dopar%{
         Yper <-  Rz[sample(nrow(Rz)),] %*% Y
         #Y permuted for the Freedman and Lane procedure
         
