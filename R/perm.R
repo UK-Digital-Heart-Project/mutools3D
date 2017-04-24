@@ -27,7 +27,7 @@ perm <- function(X, Y, extract, A, NNmatrix, nPermutations = 1000, HC4m = FALSE,
     cl <- makeCluster(nCores)
     registerDoParallel(cl)
     
-    resP <- foreach(iF=1:nPermutations, .packages='MUA3DP', .combine=rbind)%dopar%{
+    resP <- foreach(iF=1:nPermutations, .packages='mutools3D', .combine=rbind)%dopar%{
       Yper <-  Y[sample(1:nrow(Y)),]
       
       
