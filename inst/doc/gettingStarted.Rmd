@@ -2,7 +2,7 @@
 title: "An introduction to mass univariate analysis of three-dimensional phenotypes"
 author: "Carlo Biffi"
 date: "`r Sys.Date()`"
-output: rmarkdown::html_vignette
+output: rmarkdown::github_document
 bibliography: biblio.bib
 vignette: >
   %\VignetteIndexEntry{An introduction to mass univariate analysis of three-dimensional phenotypes}
