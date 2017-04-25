@@ -1,6 +1,6 @@
-#' Compute TFCE on a ventricular mesh.
+#' Compute threshold-free cluster enhacement (TFCE) on a ventricular mesh
 #'
-#' Given a statistical map on a 3D mesh this function computed the related TFCE map. The 3D mesh is described as a graph using a two-columns matrix the mesh edges, each row containing the vertex ID of a edge.
+#' Given a statistical map on a 3D mesh, this function computes the corresponding TFCE map. In the code, the 3D mesh is represented as a computational graph using a two-columns matrix containing the mesh edges definitions: the first column contains the ID of one vertex, the second column contains the ID of the second vertex.
 #' @param h A V-dimensional vector (V = number of vertices in the ventricular mesh) containing the values of a statistic at each vertex in the mesh.
 #' @param A A V-dimensional vector containing the area associated with a vertex, usually its Voronoi area.
 #' @param NNmatrix A Nx2 matrix containing the mesh edges. Important: to speed up the execution please avoid repetitions ofthe form (A,B) and (B,A) in the matrix.
