@@ -18,44 +18,6 @@
 
 
 
-<style type="text/css">code{white-space: pre;}</style>
-<style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-</style>
 
 
 
@@ -83,30 +45,30 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h2>Mass Univariate Regression</h2>
 <p>Mass univariate regression consists of applying a general linear model <span class="math inline">\(Y = X\beta + \epsilon\)</span> at each atlas vertex. The package provides functions <code>mur</code> and <code>murHC4m</code> to perform mass univariate regression, with the second function also applying HC4m heteroscedascity consistent estimators to correct for violation of homoscedasticity linear regression assumption. Input are a matrix <code>X</code> containig the clinical variables to study for each subject and a matrix <code>Y</code> containing at different columns the values at different vertices of a three-dimensional phenotype - in this case wall thickness.</p>
 <p>To load the dataset included in the package, please run:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(mutools3D)
-<span class="kw">data</span>(Xtest)
-<span class="kw">data</span>(Ytest)</code></pre></div>
+<pre><code>library(mutools3D)
+data(Xtest)
+data(Ytest)</code></pre>
 <p><code>X</code> in this case is a [50x9] matrix containing the synthetic clinical variable to study together with other covariates to adjust the model and the intercept term, which must always be defined in the first column. Categorical variables must be always coded using “dummy” coding. For example, in this case the variable ethnicity which had four levels has been coded by picking the level 1 as a reference level and by creating three dichotomous variables, where each variable contrasts with level 1. <code>Y</code> is a [50x27623] matrix containing the values of a three-dimensional phenotype at all the vertices under study.</p>
 <p>The output of the mass univariate functions is a matrix storing the regression coefficient <span class="math inline">\(\beta\)</span>, the t-statistic and the p-values computed at each vertex and for each variable specified.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#extract results for synthetic variable</span>
-extract =<span class="st"> </span><span class="dv">6</span>
+<pre><code>#extract results for synthetic variable
+extract = 6
 
-<span class="co">#it is also possible to study more than one variable at the same time</span>
-<span class="co">#extract = c(5,6)</span>
+#it is also possible to study more than one variable at the same time
+#extract = c(5,6)
 
-result =<span class="st"> </span><span class="kw">mur</span>(X,Y, extract)
-<span class="co">#or</span>
-result =<span class="st"> </span><span class="kw">murHC4m</span>(X,Y, extract)</code></pre></div>
+result = mur(X,Y, extract)
+#or
+result = murHC4m(X,Y, extract)</code></pre>
 </div>
 <div id="threshold-free-cluster-enhancement" class="section level2">
 <h2>Threshold-free cluster enhancement</h2>
 <p>Threshold-free cluster enhancement (TFCE) is an image-enhancement technique that computes at each vertex of the triangular mesh a score based on the extent and magnitude of the area of coherent signal that surrounds it <span class="citation">(Smith and Nichols 2009)</span>. Given a statistical map on a 3D mesh, the TFCE function computes the corresponding TFCE map. In the code, the 3D mesh is represented as a computational graph using a two-columns matrix containing the mesh edges definitions: the first column contains the ID of one vertex, the second column contains the ID of the second vertex. To load an example of this matrix together with a V-dimensional vector (V = number of vertices in the mesh) storing the area associated with each vertex in the mesh, please run:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#load data for TFCE</span>
-<span class="kw">data</span>(NNmatrix)
-<span class="kw">data</span>(areas)</code></pre></div>
+<pre><code>#load data for TFCE
+data(NNmatrix)
+data(areas)</code></pre>
 <p>TFCE can be then executed by using following code</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#run TFCE on the t-statistic map previously obtained</span>
-TFCEresults =<span class="st"> </span><span class="kw">TFCE</span>(result[,<span class="dv">2</span>], A, NNmatrix)</code></pre></div>
+<pre><code>#run TFCE on the t-statistic map previously obtained
+TFCEresults = TFCE(result[,2], A, NNmatrix)</code></pre>
 <p>TFCE-derived pvalues can be computed by performing permutation testing on the input data. We developed a specific function to do so and that implements the Freedman-Lane procedure for permutation testing of the general linear model <span class="citation">(Winkler and others 2014)</span>.</p>
 <pre><code>#compute TFCE-derived pvalues using Freedman-Lane procedure.
 

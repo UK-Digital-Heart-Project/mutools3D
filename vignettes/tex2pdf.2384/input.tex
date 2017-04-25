@@ -1,0 +1,283 @@
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\hypersetup{unicode=true,
+            pdftitle={An introduction to mass univariate analysis of three-dimensional phenotypes},
+            pdfauthor={Carlo Biffi},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{{#1}}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{{#1}}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{{#1}}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{{#1}}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{{#1}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{{#1}}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{{#1}}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{{#1}}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{{#1}}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{{#1}}}
+\newcommand{\ImportTok}[1]{{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{{#1}}}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{{#1}}}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{{#1}}}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{{#1}}}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{{#1}}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{{#1}}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{{#1}}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{{#1}}}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{{#1}}}}
+\newcommand{\BuiltInTok}[1]{{#1}}
+\newcommand{\ExtensionTok}[1]{{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{{#1}}}
+\newcommand{\RegionMarkerTok}[1]{{#1}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{{#1}}}}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{{#1}}}}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{{#1}}}}
+\newcommand{\NormalTok}[1]{{#1}}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+%%% Use protect on footnotes to avoid problems with footnotes in titles
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
+
+%%% Change title format to be more compact
+\usepackage{titling}
+
+% Create subtitle command for use in maketitle
+\newcommand{\subtitle}[1]{
+  \posttitle{
+    \begin{center}\large#1\end{center}
+    }
+}
+
+\setlength{\droptitle}{-2em}
+  \title{An introduction to mass univariate analysis of three-dimensional
+phenotypes}
+  \pretitle{\vspace{\droptitle}\centering\huge}
+  \posttitle{\par}
+  \author{Carlo Biffi}
+  \preauthor{\centering\large\emph}
+  \postauthor{\par}
+  \predate{\centering\large\emph}
+  \postdate{\par}
+  \date{2017-04-25}
+
+
+\begin{document}
+\maketitle
+
+The R tools provided by \texttt{mutools3d} package enable to derive
+association maps between clinical and genetic variables and
+three-dimensional (3D) phenotypes defined on a triangular mesh. As an
+examplar application, we provide data for the study of the association
+between a synthetic clinical variable and wall thickness defined on a 3D
+left ventricular mesh (atlas). In this tutorial, we are going to
+illustrate:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  how to derive the regression coefficient at each vertex of the atlas
+  representing the association between WT and the clinical variable
+  under study (mass univariate regression).
+\item
+  how to boost belief in extended areas of signal by using
+  threshold-free cluster enhacement (TFCE) together with an appropriate
+  permutation strategy (Freedman-Lane procedure) to derive new p-values.
+\end{enumerate}
+
+\subsection{Mass Univariate
+Regression}\label{mass-univariate-regression}
+
+Mass univariate regression consists of applying a general linear model
+\(Y = X\beta + \epsilon\) at each atlas vertex. The package provides
+functions \texttt{mur} and \texttt{murHC4m} to perform mass univariate
+regression, with the second function also applying HC4m heteroscedascity
+consistent estimators to correct for violation of homoscedasticity
+linear regression assumption. Input are a matrix \texttt{X} containig
+the clinical variables to study for each subject and a matrix \texttt{Y}
+containing at different columns the values at different vertices of a
+three-dimensional phenotype - in this case wall thickness.
+
+To load the dataset included in the package, please run:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(mutools3D)}
+\KeywordTok{data}\NormalTok{(Xtest)}
+\KeywordTok{data}\NormalTok{(Ytest)}
+\end{Highlighting}
+\end{Shaded}
+
+\texttt{X} in this case is a {[}50x9{]} matrix containing the synthetic
+clinical variable to study together with other covariates to adjust the
+model and the intercept term, which must always be defined in the first
+column. Categorical variables must be always coded using ``dummy''
+coding. For example, in this case the variable ethnicity which had four
+levels has been coded by picking the level 1 as a reference level and by
+creating three dichotomous variables, where each variable contrasts with
+level 1. \texttt{Y} is a {[}50x27623{]} matrix containing the values of
+a three-dimensional phenotype at all the vertices under study.
+
+The output of the mass univariate functions is a matrix storing the
+regression coefficient \(\beta\), the t-statistic and the p-values
+computed at each vertex and for each variable specified.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#extract results for synthetic variable}
+\NormalTok{extract =}\StringTok{ }\DecValTok{6}
+
+\CommentTok{#it is also possible to study more than one variable at the same time}
+\CommentTok{#extract = c(5,6)}
+
+\NormalTok{result =}\StringTok{ }\KeywordTok{mur}\NormalTok{(X,Y, extract)}
+\CommentTok{#or}
+\NormalTok{result =}\StringTok{ }\KeywordTok{murHC4m}\NormalTok{(X,Y, extract)}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{Threshold-free cluster
+enhancement}\label{threshold-free-cluster-enhancement}
+
+Threshold-free cluster enhancement (TFCE) is an image-enhancement
+technique that computes at each vertex of the triangular mesh a score
+based on the extent and magnitude of the area of coherent signal that
+surrounds it (Smith and Nichols 2009). Given a statistical map on a 3D
+mesh, the TFCE function computes the corresponding TFCE map. In the
+code, the 3D mesh is represented as a computational graph using a
+two-columns matrix containing the mesh edges definitions: the first
+column contains the ID of one vertex, the second column contains the ID
+of the second vertex. To load an example of this matrix together with a
+V-dimensional vector (V = number of vertices in the mesh) storing the
+area associated with each vertex in the mesh, please run:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#load data for TFCE}
+\KeywordTok{data}\NormalTok{(NNmatrix)}
+\KeywordTok{data}\NormalTok{(areas)}
+\end{Highlighting}
+\end{Shaded}
+
+TFCE can be then executed by using following code
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#run TFCE on the t-statistic map previously obtained}
+\NormalTok{TFCEresults =}\StringTok{ }\KeywordTok{TFCE}\NormalTok{(result[,}\DecValTok{2}\NormalTok{], A, NNmatrix)}
+\end{Highlighting}
+\end{Shaded}
+
+TFCE-derived pvalues can be computed by performing permutation testing
+on the input data. We developed a specific function to do so and that
+implements the Freedman-Lane procedure for permutation testing of the
+general linear model (Winkler and others 2014).
+
+\begin{verbatim}
+#compute TFCE-derived pvalues using Freedman-Lane procedure.
+
+nPermutations = 1000
+HC4m = TRUE
+parallel = TRUE
+nCores = 8
+verbOutput = 0
+
+TFCEresults = permFL(X, Y, extract, A, NNmatrix, nPermutations, HC4m, parallel, nCores, verbOutput)
+\end{verbatim}
+
+If \texttt{verbOutput} is set to 0 the output is a matrix containing in
+its rows the pvalues computed at each vertex while the number of columns
+referes to the variables specified in extract. If \texttt{verbOutput} is
+set to 1 the output is a list where the \texttt{pval} field contains the
+pvalues computed at each vertex, \texttt{TFCEmatrix} field contains a V
+x nPermutations matrix containing the TFCE scores computed for each
+permutation and the tfceScores field is a V-dimensional vector
+containing the TFCE scores of the non-permuted data.
+
+Last but not least, the derived pvalues using either TFCE or the
+standard mass univariate approach need to be corrected for multiple
+testing as we are performing statistical hypothesis testing at each
+atlas vertex. For doing so, we suggest to use
+\href{http://bioconductor.org/packages/release/bioc/html/multtest.html}{multtest
+package}.
+
+\subsection*{REFERENCES}\label{references}
+\addcontentsline{toc}{subsection}{REFERENCES}
+
+\hypertarget{refs}{}
+\hypertarget{ref-smith2009}{}
+Smith, Stephen M, and Thomas E Nichols. 2009. ``Threshold-Free Cluster
+Enhancement: Addressing Problems of Smoothing, Threshold Dependence and
+Localisation in Cluster Inference.'' \emph{NeuroImage} 44 (1). Elsevier:
+83--98.
+
+\hypertarget{ref-winkler2014}{}
+Winkler, Anderson M, and others. 2014. ``Permutation Inference for the
+General Linear Model.'' \emph{NeuroImage} 92. Elsevier: 381--97.
+
+
+\end{document}

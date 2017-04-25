@@ -20,7 +20,7 @@ Mass univariate regression consists of applying a general linear model $Y = X\be
 
 To load the dataset included in the package, please run:
 
-```{r}
+```
 library(mutools3D)
 data(Xtest)
 data(Ytest)
@@ -30,7 +30,7 @@ data(Ytest)
 
 The output of the mass univariate functions is a matrix storing the regression coefficient $\beta$, the t-statistic and the p-values computed at each vertex and for each variable specified.
 
-```{r}
+```
 #extract results for synthetic variable
 extract = 6
 
@@ -45,7 +45,7 @@ result = murHC4m(X,Y, extract)
 ## Threshold-free cluster enhancement
 Threshold-free cluster enhancement (TFCE) is an image-enhancement technique that computes at each vertex of the triangular mesh a score based on the extent and magnitude of the area of coherent signal that surrounds it [@smith2009]. Given a statistical map on a 3D mesh, the TFCE function computes the corresponding TFCE map. In the code, the 3D mesh is represented as a computational graph using a two-columns matrix containing the mesh edges definitions: the first column contains the ID of one vertex, the second column contains the ID of the second vertex. To load an example of this matrix together with a V-dimensional vector (V = number of vertices in the mesh) storing the area associated with each vertex in the mesh, please run:
 
-```{r}
+```
 #load data for TFCE
 data(NNmatrix)
 data(areas)
@@ -53,7 +53,7 @@ data(areas)
 
 TFCE can be then executed by using following code
 
-```{r}
+```
 #run TFCE on the t-statistic map previously obtained
 TFCEresults = TFCE(result[,2], A, NNmatrix)
 ```
@@ -77,4 +77,4 @@ If `verbOutput` is set to 0 the output is a matrix containing in its rows the pv
 Last but not least, the derived pvalues using either TFCE or the standard mass univariate approach need to be corrected for multiple testing as we are performing statistical hypothesis testing at each atlas vertex. For doing so, we suggest to use [multtest package](http://bioconductor.org/packages/release/bioc/html/multtest.html).
 
 
-##REFERENCES
+## REFERENCES
