@@ -6,8 +6,7 @@
 #' @return A V-dimensional vector containing vertices areas.
 #' @keywords voronoi 3D mesh vertex areas
 #' @export
-#' @examples
-#' vertAreas <- computeVertAreas(triangles, coord)
+#' @examples vertAreas <- computeVertAreas(triangles, coord)
 
 computeVertAreas <- function(triangles, coord){
   

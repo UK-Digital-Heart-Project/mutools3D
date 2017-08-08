@@ -8,8 +8,7 @@
 #' @param extract is an array expressing which covariates in X you want to extract.
 #' @keywords mur regression
 #' @export
-#' @examples
-#' extract <- c(1,3) #extract the first and third covariate.
+#' @examples extract <- c(1,3) #extract the first and third covariate.
 #' result <- murHC4m(X, Y, extract)
 #' betas <- result[,1]
 #' tstatistics <- result[,2]

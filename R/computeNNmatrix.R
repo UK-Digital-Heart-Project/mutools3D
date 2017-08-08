@@ -6,8 +6,8 @@
 #' @return A Ex2 matrix containing the mesh edges (E = numbr of edges)
 #' @keywords NNmatrix 
 #' @export
-#' @examples
-#' NNmatrix <- computeNNmatrix(triangles)
+#' @examples NNmatrix <- computeNNmatrix(triangles)
+
 
 computeNNmatrix <- function(triangles){
   

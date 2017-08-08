@@ -3,7 +3,9 @@
 #' Given a NxV imaging matrix Y (N = number of subjects, V = number of vertices in the ventricular mesh), a NxC model matrix X  (N = number of subjects, C = number of variables + intercept term) 
 #' and the numbers of the column variables to extract, this function computes for each variable specified in extract the TFCE derived p-values map on the mesh. The output is a matrix with a number of 
 #' columns equal to the lenght of extract and a rows equal to the number of vertices.
-#' @param X A V-dimensional vector (V = number of vertices in the ventricular mesh) containing the values of a statistic at each vertex in the mesh.
+#' @param X is the design matrix. Number of rows = number of subjects in the study, number of columns = number of vertices in the atlas. Numerical varable must be normalized to 0-mean and unit-standard deviation. Categorical variables must be coded using dummy coding. The first column should contain the intercept (all 1s).
+#' @param Y is the imaging matrix. Number of rows = N. Number of columns = V. 
+#' @param extract is an array expressing which covariates in X you want to extract.
 #' @param A A V-dimensional vector containing the area associated with a vertex, usually its Voronoi area.
 #' @param NNmatrix  Nx2 matrix containing the mesh edges. Important: to speed up the execution please avoid repetitions like (A,B) and (B,A).
 #' @param nPermutations number of permutations in the permutation test, default is 1000.
@@ -12,10 +14,9 @@
 #' @param nCores flag for defining the number of cores to use, default is 1.
 #' @param verbOutput flag for activating verbose output, default is 0 (off).
 #' @return If verbOutput = 0 the output is a matrix containing in its rows the pvalues computed at each vertex and the number of colums referes to the variables specified in extract. If verbOutput = 1 the output is a list where the pval field contains the the pvalues computed at each vertex, TFCEmatrix field contains a V x nPermutations matrix containing the TFCE scores computed for each permutation and the tfceScores field is a V-dimensional vector containing the TFCE scores of the non-permuted data.
-#' @keywords mur regression
+#' @keywords mur TFCE Freedman-Lane
 #' @export
-#' @examples
-#' TFCEresults = perm(X, Y, extract, A, NNmatrix, nPermutations = 1000, HC4m = FALSE)
+#' @examples TFCEresults = perm(X, Y, extract, A, NNmatrix, nPermutations = 1000, HC4m = FALSE)
 
 perm <- function(X, Y, extract, A, NNmatrix, nPermutations = 1000, HC4m = FALSE, parallel=FALSE, nCores=1, verbOutput=0){
   
@@ -27,7 +28,7 @@ perm <- function(X, Y, extract, A, NNmatrix, nPermutations = 1000, HC4m = FALSE,
     cl <- makeCluster(nCores)
     registerDoParallel(cl)
     
-    resP <- foreach(iF=1:nPermutations, .packages='mutools3D', .combine=rbind)%dopar%{
+    resP <- foreach(iF=1:nPermutations, .packages='MUA3DP', .combine=rbind)%dopar%{
       Yper <-  Y[sample(1:nrow(Y)),]
       
       
