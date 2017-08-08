@@ -96,6 +96,6 @@ perm <- function(X, Y, extract, A, NNmatrix, nPermutations = 1000, HC4m = FALSE,
   if(verbOutput==1) TFCEresults = list("pvalues" = significance, "TFCEmatrix" = TFCEmatrix, "tfceScores" = tfceScores)
   else TFCEresults = significance
   
-  return(significance)
+  return(TFCEresults)
   
 }
