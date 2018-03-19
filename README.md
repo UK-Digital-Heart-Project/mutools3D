@@ -28,4 +28,4 @@ vignette("gettingStarted", package = "mutools3D")
 The code has been fully documented and function descriptions are available from within R, i.e. `help(mur)`.
 
 ## Citation
-C. Biffi, A. de Marvao, M. I. Attard, T. J. W. Dawes, N. Whiffin, W. Bai, W. Shi, C. Francis, H. Meyer, R. Buchan, S. A. Cook, D. Rueckert, D. P. O'Regan, Three-dimensional cardiovascular imaging-genetics: a mass univariate framework. Bioinformatics 34, 97-103 (2018).
+Biffi C, de Marvao A, Attard MI, Dawes TJW, Whiffin N, Bai W, Shi W, Francis C, Meyer H, Buchan R, Cook SA, Rueckert D and O'Regan DP. Three-dimensional cardiovascular imaging-genetics: a mass univariate framework. [Bioinformatics](https://doi.org/10.1093/bioinformatics/btx552). 2018;34:97-103
