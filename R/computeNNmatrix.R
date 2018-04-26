@@ -16,7 +16,7 @@ computeNNmatrix <- function(triangles){
   triangles = as.matrix(triangles)
 
   #for each vertex
-  for (v in 1:max(coord)){ 
+  for (v in 1:max(triangles)){ 
   
     tr4Point <- triangles[c(which(triangles[,1]==v),
                           which(triangles[,2]==v),
