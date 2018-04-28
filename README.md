@@ -1,3 +1,4 @@
+
 # mutools3D 
 
 The **mutools3D** package implements R functions for mass univariate analysis of three-dimensional phenotypes. 
@@ -29,3 +30,5 @@ The code has been fully documented and function descriptions are available from 
 
 ## Citation
 Biffi C, de Marvao A, Attard MI, Dawes TJW, Whiffin N, Bai W, Shi W, Francis C, Meyer H, Buchan R, Cook SA, Rueckert D and O'Regan DP. Three-dimensional cardiovascular imaging-genetics: a mass univariate framework. [Bioinformatics](https://doi.org/10.1093/bioinformatics/btx552). 2018;34:97-103
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.834610.svg)](https://doi.org/10.5281/zenodo.834610)
