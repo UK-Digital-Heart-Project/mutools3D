@@ -1,9 +1,19 @@
-#' matrix Y (N = number of subjects, V = number of vertices
-#' in the ventricular mesh, K = number of principal components from the concatenated
-#' vertices)
-#' matrix X  (N = number of subjects, C = number of
-#' variables + intercept term) and the numbers of the column variables to extract
+#' Mass Univariate Regression.
 
+#' In mass multivariate analysis, Multivariate Analysis of Variance (MANOVA) is used to analyze patterns of heart activity across multiple regions or vertices.
+#' Y represents a vector of, for instance, vertex coordinates over time, and X denotes a design matrix.
+#' matrix Y (N = number of subjects, V = number of vertices in the ventricular mesh, K = number of principal components from the concatenated vertices over time)
+#' matrix X  (N = number of subjects, C = number of variables + intercept term) and the numbers of the column variables to extract
+#' @param X is the design matrix. Number of rows = number of subjects in the study, number of columns = number of vertices in the atlas. Numerical variable must be normalized to 0-mean and unit-standard deviation. Categorical variables must be coded using dummy coding. The first column should contain the intercept (all 1s).
+#' @param Y is the imaging matrix. Number of rows = N, Number of columns = V, K= num principal components. 
+#' @param extract is an array expressing which covariates in X you want to extract.
+#' @keywords mur_multivariate regression
+#' @export
+#' @examples extract <- c(1,3) #extract the first and third covariate.
+#' result <- mur_multivariate(X, Y, extract)
+#' Etas <- result[,1]
+#' fstatistics <- result[,2]
+#' pvalues <- result[,3]
           
 library(effectsize)
 
