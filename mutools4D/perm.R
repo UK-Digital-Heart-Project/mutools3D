@@ -35,8 +35,8 @@ perm <- function(X, Y, extract, A, NNmatrix, nPermutations = 1000, parallel = FA
   set.seed(1234)
   # set seed for reproducibility
   
-  num_vertices <- dim(Y, 2)
-
+  num_vertices <- dim(Y)[2]
+  
   # parallelization
   if (parallel) {
     cl <- makeCluster(nCores)
