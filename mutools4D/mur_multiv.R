@@ -1,4 +1,10 @@
+#' matrix Y (N = number of subjects, V = number of vertices
+#' in the ventricular mesh, K = number of principal components from the concatenated
+#' vertices)
+#' matrix X  (N = number of subjects, C = number of
+#' variables + intercept term) and the numbers of the column variables to extract
 
+          
 library(effectsize)
 
 mur_multivariate <- function(X, Y, extract){
